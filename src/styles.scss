@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+
+  // global
+
+  --primary-color: #32ADFF;
+  --primary-color-light: #4DB8FF;
+  --primary-color-dark: #1272B3;
+  --secondary-color: #FFAB33;
+  --secondary-color-dark: #B36900;
+  --success: rgb(142, 245, 142);
+  --warning: rgb(255, 138, 138);
+
+  * {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+
+    overflow-x: none;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+  }
+  
+  h5 {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  // font
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+}
