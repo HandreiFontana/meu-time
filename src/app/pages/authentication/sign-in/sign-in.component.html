@@ -10,12 +10,12 @@
       <form [formGroup]="signInForm" class="form column">
         <label for="token">Token</label>
 
-        <input type="text" formControlName="token" name="token">
+        <input type="text" formControlName="token" name="token" required [class.invalid]="signInForm.controls.token.invalid && (signInForm.controls.token.dirty || signInForm.controls.token.touched)">
       </form>
 
       <div class="buttons center">
-        <div class="button-secondary paper center"><h5 class="uppercase bold">registrar</h5></div>
-        <div class="button paper center"><h5 class="uppercase bold">entrar</h5></div>
+        <div class="button-secondary paper center" (click)="navigateToRegister()"><h5 class="uppercase bold">registrar</h5></div>
+        <div class="button paper center" (click)="signIn()"><h5 class="uppercase bold">entrar</h5></div>
       </div>
     </div>
     
