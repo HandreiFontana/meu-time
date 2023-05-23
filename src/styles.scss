@@ -7,6 +7,9 @@
   --primary-color-dark: #1272B3;
   --secondary-color: #FFAB33;
   --secondary-color-dark: #B36900;
+  --white: #f7f7f7;
+  --sign-in-background: #edf8ff;
+  --grey: #eeeeee;
   --success: rgb(142, 245, 142);
   --warning: rgb(255, 138, 138);
 
@@ -47,5 +50,45 @@
 
   .bold {
     font-weight: 700;
+  }
+
+  // flex
+  .fs {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .column {
+    flex-direction: column;
+  }
+
+  // containers
+  .paper {
+    box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+
+  .button {
+    background-color: var(--primary-color);
+
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .button-secondary {
+    background-color: var(--secondary-color);
+
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .button:hover {
+    filter: brightness(0.8);
   }
 }

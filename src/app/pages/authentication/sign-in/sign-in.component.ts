@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class SignInComponent {
 
+  public signInForm = this.fb.group({
+    token: null
+  })
+
+  constructor(private fb: FormBuilder) { }
 }

@@ -1,1 +1,26 @@
-<p>sign-in works!</p>
+<div class="background fs center">
+  <div class="sign-in center paper">
+    <div class="sign-in-main center column">
+      <div class="center column">
+        <h2>Bem-vindo ao</h2>
+
+        <h2>Meu Time!</h2>
+      </div>
+
+      <form [formGroup]="signInForm" class="form column">
+        <label for="token">Token</label>
+
+        <input type="text" formControlName="token" name="token">
+      </form>
+
+      <div class="buttons center">
+        <div class="button-secondary paper center"><h5 class="uppercase bold">registrar</h5></div>
+        <div class="button paper center"><h5 class="uppercase bold">entrar</h5></div>
+      </div>
+    </div>
+    
+    <div class="image">
+      <img src="assets/images/sign-in.jpg">
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+h2 {
+  color: var(--primary-color);
+}
+
+.background {
+  background-color: var(--sign-in-background);
+}
+
+.sign-in {
+  width: 100%;
+  max-width: 900px;
+  max-height: 500px;
+  width: calc(100vw - 8rem);
+  height: calc(100vh - 8rem);
+}
+
+.image {
+  height: 100%;
+  width: 50%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.sign-in-main {
+  width: 50%;
+  height: 100%;
+  max-height: calc(500px - 4rem);
+
+  padding: 2rem;
+
+  background-color: var(--white);
+
+  gap: 3rem;
+}
+
+.form {
+  display: flex;
+  width: 100%;
+
+  input {
+    padding: 0.5rem;
+
+    border-radius: 5px;
+    border: solid 1px black
+  }
+}
+
+.button-secondary,
+.button {
+  width: 150px;
+  height: 40px;
+}
+
+.buttons {
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .image {
+    display: none;
+  }
+
+  .sign-in-main {
+    width: 100%;
+  }
+}
