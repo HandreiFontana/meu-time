@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { SignInComponent } from './pages/authentication/sign-in/sign-in.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/general/home/home.component';
+import { DefaultComponent } from './components/default/default.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
-    HomeComponent
+    HomeComponent,
+    DefaultComponent
   ],
   imports: [
     BrowserModule,
