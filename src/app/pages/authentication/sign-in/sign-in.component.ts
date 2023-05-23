@@ -11,7 +11,7 @@ export class SignInComponent {
   private rapidapiUrl: string
 
   public signInForm = this.fb.group({
-    token: [null, Validators.required]
+    token: this.fb.control<string | null>(null, [Validators.required])
   })
 
   constructor(
@@ -33,7 +33,7 @@ export class SignInComponent {
 
       return
     }
-    
+
     this.signInForm.markAllAsTouched()
   }
 }
