@@ -18,13 +18,15 @@ span {
 }
 
 .toolbar-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.center-items {
   padding: 0 1rem;
   width: 100%;
   max-width: 1000px;
   height: 100%;
   margin: 0 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
