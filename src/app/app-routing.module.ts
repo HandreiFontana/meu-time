@@ -6,7 +6,8 @@ const routes: Routes = [
   {
     path: 'sign-in',
     component: SignInComponent
-  }
+  },
+  { path: "**", redirectTo: "/sign-in" },
 ];
 
 @NgModule({
