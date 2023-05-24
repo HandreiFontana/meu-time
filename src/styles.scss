@@ -54,7 +54,7 @@
 
   // flex
   .fs {
-    width: 100vw;
+    width: calc(100vw - 6px);
     height: 100vh;
   }
 
@@ -90,5 +90,15 @@
 
   .button:hover {
     filter: brightness(0.8);
+  }
+
+  // scroll
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: var(--primary-color);
   }
 }

@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/general/home/home.component';
 import { DefaultComponent } from './components/default/default.component';
 import { CountriesComponent } from './components/home/countries/countries.component';
 import { LeaguesComponent } from './components/home/leagues/leagues.component';
+import { TeamsComponent } from './components/home/teams/teams.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LeaguesComponent } from './components/home/leagues/leagues.component';
     HomeComponent,
     DefaultComponent,
     CountriesComponent,
-    LeaguesComponent
+    LeaguesComponent,
+    TeamsComponent
   ],
   imports: [
     BrowserModule,

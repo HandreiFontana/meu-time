@@ -14,7 +14,7 @@ span {
 }
 
 .toolbar-body {
-  width: 100vw;
+  width: calc(100vw - 6px);
   height: 60px;
 
   display: flex;
