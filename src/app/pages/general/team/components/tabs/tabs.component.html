@@ -5,5 +5,25 @@
     <div class="center tab-item" [ngClass]="selectedTab === 2 ? 'tab-active' : 'tab-inactive'" (click)="openTab(2)"><h5>ESTATÍSTICAS</h5></div>
   </div>
 
-  <div class="tabs-body"></div>
+  <div class="tabs-body">
+    <div class="players-tab" *ngIf="selectedTab === 0">
+      <div class="player">
+        <div class="player-100 player-margin-left"><h4 class="bold">Nome</h4></div>
+
+        <div class="player-30 center"><h4 class="bold">Idade</h4></div>
+
+        <div class="player-50 center"><h4 class="bold">Nacionalidade</h4></div>
+      </div>
+
+      <div *ngFor="let player of players" class="player">
+        <img [src]="player.photo" [alt]="player.name">
+
+        <div class="player-100"><h4>{{player.name}}</h4></div>
+
+        <div class="player-30 center"><h4>{{player.age}}</h4></div>
+
+        <div class="player-50 center"><h4>{{player.nacionality}}</h4></div>
+      </div>
+    </div>
+  </div>
 </div>

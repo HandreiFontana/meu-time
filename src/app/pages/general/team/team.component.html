@@ -1,7 +1,13 @@
-<div class="fs all-screen center" *ngIf="!teamValue">
+<div class="fs all-screen center" *ngIf="teamValue">
   <div class="team-modal paper">
     <div class="team-modal-body">
-      <app-tabs> </app-tabs>
+      <div class="team-details">
+        <img [src]="teamValue.image" [alt]="teamValue.label">
+
+        <h2>{{ teamValue.label }}</h2>
+      </div>
+
+      <app-tabs [team-value]="teamValue.options.code"> </app-tabs>
     </div>
 
     <div class="team-modal-buttons">

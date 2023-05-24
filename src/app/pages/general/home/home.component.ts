@@ -67,6 +67,7 @@ export class HomeComponent {
             label: team.name,
             action: this.teamOptionClick.bind(this),
             image: team.logo,
+            options: { code: team.id }
           })
         })
       })

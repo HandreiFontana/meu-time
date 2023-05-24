@@ -22,6 +22,19 @@
   height: calc(100% - 40px);
 }
 
+.team-details {
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  img {
+    height: 80px;
+  }
+}
+
 .team-modal-buttons {
   width: 100%;
   height: 40px;

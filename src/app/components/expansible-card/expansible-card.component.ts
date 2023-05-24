@@ -4,7 +4,7 @@ export interface ExpansibleCardOption {
   label: string
   action: Function
   image?: string
-  options?: any
+  options: any
 }
 
 @Component({

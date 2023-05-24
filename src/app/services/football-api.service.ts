@@ -19,6 +19,13 @@ export interface ITeam {
   logo: string
 }
 
+export interface IPlayer {
+  name: string
+  age: number
+  nacionality: string
+  photo: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -60,5 +67,27 @@ export class FootballApiService {
       { id: 33, name: 'PSG', logo: 'https://media.api-sports.io/football/teams/29.png' },
     ]
     return of(teams)
+  }
+
+  public getPlayers(teamCode: string): Observable<IPlayer[]> {
+    const players: IPlayer[] = [
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' },
+      { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' }
+    ]
+    return of(players)
   }
 }
