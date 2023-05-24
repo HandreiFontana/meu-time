@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/general/home/home.component';
 import { DefaultComponent } from './components/default/default.component';
 import { ExpansibleCardComponent } from './components/expansible-card/expansible-card.component';
+import { TeamComponent } from './pages/general/team/team.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ExpansibleCardComponent } from './components/expansible-card/expansible
     SignInComponent,
     HomeComponent,
     DefaultComponent,
-    ExpansibleCardComponent
+    ExpansibleCardComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,

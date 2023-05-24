@@ -20,7 +20,8 @@ export class HomeComponent {
 
   public leagueSelected?: ExpansibleCardOption
   public leagues: ExpansibleCardOption[] = []
-
+  
+  public teamSelected?: ExpansibleCardOption
   public teams: ExpansibleCardOption[] = []
 
   private populateCountries() {
@@ -91,6 +92,10 @@ export class HomeComponent {
   }
 
   private teamOptionClick(teamOption: ExpansibleCardOption) {
-    console.log(teamOption)
+    this.teamSelected = teamOption
+  }
+
+  public unselectTeam() {
+    this.teamSelected = undefined
   }
 }

@@ -27,3 +27,8 @@
     [options]="teams"
   > </app-expansible-card>
 </div>
+
+<app-team
+  [team-value]="teamSelected"
+  (team-close)="unselectTeam()"
+> </app-team>
