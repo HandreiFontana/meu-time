@@ -3,6 +3,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export interface ExpansibleCardOption {
   label: string
   action: Function
+  image?: string
+  options?: any
 }
 
 @Component({

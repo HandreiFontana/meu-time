@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { finalize } from 'rxjs';
 import { ExpansibleCardOption } from 'src/app/components/expansible-card/expansible-card.component';
+import { FootballApiService, ICountry } from 'src/app/services/football-api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,27 +9,54 @@ import { ExpansibleCardOption } from 'src/app/components/expansible-card/expansi
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  constructor(private footballApi: FootballApiService) {
+    this.populateCountries()
+  }
+
   public expandedCard?: string | null
 
   public countrySelected?: ExpansibleCardOption
-  public countries: ExpansibleCardOption[] = [
-    { label: 'Alemanha', action: this.countryOptionClick.bind(this) },
-    { label: 'Itália', action: this.countryOptionClick.bind(this) },
-    { label: 'Espanha', action: this.countryOptionClick.bind(this) },
-    { label: 'Inglaterra', action: this.countryOptionClick.bind(this) },
-    { label: 'Brasil', action: this.countryOptionClick.bind(this) },
-    { label: 'França', action: this.countryOptionClick.bind(this) },
-  ]
+  public countries: ExpansibleCardOption[] = []
 
   public leagueSelected?: ExpansibleCardOption
   public leagues: ExpansibleCardOption[] = [
-    { label: 'Bundesliga', action: this.leagueOptionClick.bind(this) },
-    { label: 'Serie A', action: this.leagueOptionClick.bind(this) },
-    { label: 'La Liga', action: this.leagueOptionClick.bind(this) },
-    { label: 'Premier League', action: this.leagueOptionClick.bind(this) },
-    { label: 'Brasileirão', action: this.leagueOptionClick.bind(this) },
-    { label: 'Ligue 1', action: this.leagueOptionClick.bind(this) },
+    // { label: 'Bundesliga', action: this.leagueOptionClick.bind(this) },
+    // { label: 'Serie A', action: this.leagueOptionClick.bind(this) },
+    // { label: 'La Liga', action: this.leagueOptionClick.bind(this) },
+    // { label: 'Premier League', action: this.leagueOptionClick.bind(this) },
+    // { label: 'Brasileirão', action: this.leagueOptionClick.bind(this) },
+    // { label: 'Ligue 1', action: this.leagueOptionClick.bind(this) },
   ]
+
+  private populateCountries() {
+    this.footballApi
+      .getCountries()
+      .subscribe(countries => {
+        countries.map(country => {
+          this.countries.push({
+            label: country.name,
+            action: this.countryOptionClick.bind(this),
+            image: country.flag,
+            options: { code: country.code }
+          })
+        })
+      })
+  }
+
+  private populateLeagues(countrySelected: string) {
+    this.footballApi
+      .getLeagues(countrySelected)
+      .pipe(finalize(() => this.expandedCard = 'leagues'))
+      .subscribe(leagues => {
+        leagues.map(league => {
+          this.leagues.push({
+            label: league.name,
+            action: this.leagueOptionClick.bind(this),
+            image: league.logo
+          })
+        })
+      })
+  }
 
   public toggleExpandedCard(card: string) {
     this.expandedCard = card !== this.expandedCard ? card : null
@@ -39,7 +68,7 @@ export class HomeComponent {
 
   private countryOptionClick(countryOption: ExpansibleCardOption) {
     this.countrySelected = countryOption
-    this.expandedCard = 'leagues'
+    this.populateLeagues(countryOption.options!.code)
   }
 
   private leagueOptionClick(leagueOption: ExpansibleCardOption) {
