@@ -1,0 +1,13 @@
+.leagues {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--primary-color-light);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.leagues-header {
+  display: flex;
+  gap: 1rem;
+}

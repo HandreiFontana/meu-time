@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/general/home/home.component';
 import { DefaultComponent } from './components/default/default.component';
 import { CountriesComponent } from './components/home/countries/countries.component';
+import { LeaguesComponent } from './components/home/leagues/leagues.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CountriesComponent } from './components/home/countries/countries.compon
     SignInComponent,
     HomeComponent,
     DefaultComponent,
-    CountriesComponent
+    CountriesComponent,
+    LeaguesComponent
   ],
   imports: [
     BrowserModule,
