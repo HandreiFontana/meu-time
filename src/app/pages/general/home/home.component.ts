@@ -9,13 +9,14 @@ import { ExpansibleCardOption } from 'src/app/components/expansible-card/expansi
 export class HomeComponent {
   public expandedCard?: string | null
 
+  public countrySelected?: ExpansibleCardOption
   public countries: ExpansibleCardOption[] = [
-    { label: 'Alemanha', action: this.cardOptionClick.bind(this) },
-    { label: 'Itália', action: this.cardOptionClick.bind(this) },
-    { label: 'Espanha', action: this.cardOptionClick.bind(this) },
-    { label: 'Inglaterra', action: this.cardOptionClick.bind(this) },
-    { label: 'Brasil', action: this.cardOptionClick.bind(this) },
-    { label: 'França', action: this.cardOptionClick.bind(this) },
+    { label: 'Alemanha', action: this.countryOptionClick.bind(this) },
+    { label: 'Itália', action: this.countryOptionClick.bind(this) },
+    { label: 'Espanha', action: this.countryOptionClick.bind(this) },
+    { label: 'Inglaterra', action: this.countryOptionClick.bind(this) },
+    { label: 'Brasil', action: this.countryOptionClick.bind(this) },
+    { label: 'França', action: this.countryOptionClick.bind(this) },
   ]
 
   public toggleExpandedCard(card: string) {
@@ -26,7 +27,8 @@ export class HomeComponent {
     return this.expandedCard === value
   }
 
-  private cardOptionClick(cardOption: ExpansibleCardOption) {
-    console.log(cardOption)
+  private countryOptionClick(countryOption: ExpansibleCardOption) {
+    this.countrySelected = countryOption
+    this.expandedCard = 'leagues'
   }
 }
