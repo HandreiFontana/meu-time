@@ -19,14 +19,7 @@ export class HomeComponent {
   public countries: ExpansibleCardOption[] = []
 
   public leagueSelected?: ExpansibleCardOption
-  public leagues: ExpansibleCardOption[] = [
-    // { label: 'Bundesliga', action: this.leagueOptionClick.bind(this) },
-    // { label: 'Serie A', action: this.leagueOptionClick.bind(this) },
-    // { label: 'La Liga', action: this.leagueOptionClick.bind(this) },
-    // { label: 'Premier League', action: this.leagueOptionClick.bind(this) },
-    // { label: 'Brasileirão', action: this.leagueOptionClick.bind(this) },
-    // { label: 'Ligue 1', action: this.leagueOptionClick.bind(this) },
-  ]
+  public leagues: ExpansibleCardOption[] = []
 
   private populateCountries() {
     this.footballApi
