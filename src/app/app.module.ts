@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/general/home/home.component';
 import { DefaultComponent } from './components/default/default.component';
 import { ExpansibleCardComponent } from './components/expansible-card/expansible-card.component';
 import { TeamComponent } from './pages/general/team/team.component';
+import { TabsComponent } from './pages/general/team/components/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TeamComponent } from './pages/general/team/team.component';
     HomeComponent,
     DefaultComponent,
     ExpansibleCardComponent,
-    TeamComponent
+    TeamComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,

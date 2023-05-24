@@ -7,7 +7,9 @@ import { ExpansibleCardOption } from 'src/app/components/expansible-card/expansi
   styleUrls: ['./team.component.scss']
 })
 export class TeamComponent {
+  
   @Input('team-value') teamValue?: ExpansibleCardOption
+
   @Output('team-close') teamClose = new EventEmitter()
 
   public teamCloseEmit() {

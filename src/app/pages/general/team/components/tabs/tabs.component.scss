@@ -1,0 +1,41 @@
+.tabs {
+  width: 100%;
+  height: calc(100% - 60px);
+}
+
+.tabs-header {
+  height: 40px;
+  width: 100%;
+  border-bottom: solid 2px var(--primary-color);
+  
+  display: flex;
+  gap: 2px;
+}
+
+.tab-item {
+  width: 100%;
+}
+
+.tab-active {
+  background-color: var(--primary-color);
+  border-radius: 5px 5px 0 0;
+}
+
+.tab-inactive {
+  background-color: var(--background);
+  border: solid 1px var(--primary-color);
+  border-radius: 5px 5px 0 0;
+
+  user-select: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.tab-inactive:hover {
+  filter: brightness(0.8)
+}
+
+.tabs-body {
+  height: 100%;
+  width: 100%;
+}

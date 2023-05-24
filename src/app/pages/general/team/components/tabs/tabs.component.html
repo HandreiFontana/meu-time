@@ -1,0 +1,9 @@
+<div class="tabs">
+  <div class="tabs-header paper">
+    <div class="center tab-item" [ngClass]="selectedTab === 0 ? 'tab-active' : 'tab-inactive'" (click)="openTab(0)"><h5>JOGADORES</h5></div>
+    <div class="center tab-item" [ngClass]="selectedTab === 1 ? 'tab-active' : 'tab-inactive'" (click)="openTab(1)"><h5>FORMAÇÕES</h5></div>
+    <div class="center tab-item" [ngClass]="selectedTab === 2 ? 'tab-active' : 'tab-inactive'" (click)="openTab(2)"><h5>ESTATÍSTICAS</h5></div>
+  </div>
+
+  <div class="tabs-body"></div>
+</div>
