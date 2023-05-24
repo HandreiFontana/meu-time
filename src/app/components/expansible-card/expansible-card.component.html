@@ -6,15 +6,21 @@
       <h4>{{ cardTitle }}</h4>
     </div>
 
-    <div *ngIf="optionSelected">
-      {{ optionSelected.label }}
+    <div *ngIf="optionSelected" class="option-selected-item">
+      <img [src]="optionSelected.image" [alt]="optionSelected.label">
+
+      <h4>{{ optionSelected.label }}</h4>
     </div>
   </div>
 
   <div class="card-expanded" *ngIf="cardIsExpanded">
     <div class="options">
-      <div class="option center" *ngFor="let option of options" (click)="option.action(option)">
-        {{ option.label }}
+      <div class="option" *ngFor="let option of options" (click)="option.action(option)">
+        <img [src]="option.image" [alt]="option.label">
+
+        <div class="option-text center">
+          <h4>{{ option.label }}</h4>
+        </div>
       </div>
     </div>
   </div>

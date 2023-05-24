@@ -21,6 +21,8 @@ export class HomeComponent {
   public leagueSelected?: ExpansibleCardOption
   public leagues: ExpansibleCardOption[] = []
 
+  public teams: ExpansibleCardOption[] = []
+
   private populateCountries() {
     this.footballApi
       .getCountries()
@@ -37,6 +39,7 @@ export class HomeComponent {
   }
 
   private populateLeagues(countrySelected: string) {
+    this.leagues = []
     this.footballApi
       .getLeagues(countrySelected)
       .pipe(finalize(() => this.expandedCard = 'leagues'))
@@ -45,7 +48,24 @@ export class HomeComponent {
           this.leagues.push({
             label: league.name,
             action: this.leagueOptionClick.bind(this),
-            image: league.logo
+            image: league.logo,
+            options: { code: league.id }
+          })
+        })
+      })
+  }
+
+  private populateTeams(leagueSelected: string) {
+    this.teams = []
+    this.footballApi
+      .getTeams(leagueSelected)
+      .pipe(finalize(() => this.expandedCard = 'teams'))
+      .subscribe(teams => {
+        teams.map(team => {
+          this.teams.push({
+            label: team.name,
+            action: this.teamOptionClick.bind(this),
+            image: team.logo,
           })
         })
       })
@@ -61,11 +81,16 @@ export class HomeComponent {
 
   private countryOptionClick(countryOption: ExpansibleCardOption) {
     this.countrySelected = countryOption
+    this.leagueSelected = undefined
     this.populateLeagues(countryOption.options!.code)
   }
 
   private leagueOptionClick(leagueOption: ExpansibleCardOption) {
     this.leagueSelected = leagueOption
-    this.expandedCard = 'teams'
+    this.populateTeams(leagueOption.options!.code)
+  }
+
+  private teamOptionClick(teamOption: ExpansibleCardOption) {
+    console.log(teamOption)
   }
 }

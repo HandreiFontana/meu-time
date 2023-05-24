@@ -17,6 +17,15 @@
   }
 }
 
+.option-selected-item {
+  display: flex;
+  gap: 1rem;
+
+  img {
+    height: 20px;
+  }
+}
+
 .disabled {
   .card-item {
     background-color: var(--grey);
@@ -69,6 +78,10 @@
 }
 
 .option {
+  border: solid 1px var(--primary-color-dark);
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+  background-color: var(--primary-color);
+  margin: 3px;
   width: 300px;
   padding: 8px;
 
@@ -76,8 +89,20 @@
   cursor: pointer;
 
   user-select: none;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  img {
+    height: 20px;
+  }
+}
+
+.option-text {
+  width: 100%;
 }
 
 .option:hover {
-  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
+  filter: brightness(0.8)
 }
