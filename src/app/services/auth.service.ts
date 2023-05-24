@@ -10,7 +10,7 @@ export class AuthService {
 
   signIn(token: string) {
     localStorage.setItem('@meuTime:token', token)
-    // this.router.navigate(['home'])
+    this.router.navigate(['home'])
   }
 
   signOut() {
