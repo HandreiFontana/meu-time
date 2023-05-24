@@ -9,6 +9,18 @@
   gap: 1rem;
 }
 
+.disabled {
+  .card-item {
+    background-color: var(--grey);
+    
+    cursor: auto;
+  }
+
+  .card-item:hover {
+    filter: none
+  }
+}
+
 .card-item {
   position: absolute;
   left: 0;
@@ -20,8 +32,16 @@
 
   display: flex;
   justify-content: space-between;
+  background-color: var(--primary-color-light);
+  border-radius: 5px;
 
+  cursor: pointer;
+  transition: 0.2s;
   user-select: none;
+}
+
+.card-item:hover {
+  filter: brightness(0.8);
 }
 
 .card-item-first {

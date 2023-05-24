@@ -15,12 +15,15 @@ export class ExpansibleCardComponent {
   @Input('card-title') cardTitle!: string
   @Input('card-value') cardValue!: string
   @Input('card-is-expanded') cardIsExpanded: boolean = false
+  @Input('disabled') disabled: boolean = false
   @Input('options') options?: ExpansibleCardOption[]
   @Input('option-selected') optionSelected?: ExpansibleCardOption
 
   @Output('card-click') cardClick = new EventEmitter<string>()
 
   public onClick() {
-    this.cardClick.emit(this.cardValue)
+    if (!this.disabled) {
+      this.cardClick.emit(this.cardValue)
+    }
   }
 }

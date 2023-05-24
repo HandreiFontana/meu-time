@@ -13,6 +13,7 @@
     [card-is-expanded]="cardIsExpanded('leagues')"
     card-title="Ligas"
     card-value="leagues"
+    [disabled]="!countrySelected"
     [options]="leagues"
     [option-selected]="leagueSelected"
   > </app-expansible-card>
@@ -22,5 +23,6 @@
     [card-is-expanded]="cardIsExpanded('teams')"
     card-title="Times"
     card-value="teams"
+    [disabled]="!leagueSelected"
   > </app-expansible-card>
 </div>
