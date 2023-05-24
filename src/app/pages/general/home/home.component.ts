@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { finalize } from 'rxjs';
 import { ExpansibleCardOption } from 'src/app/components/expansible-card/expansible-card.component';
-import { FootballApiService, ICountry } from 'src/app/services/football-api.service';
+import { FootballApiService } from 'src/app/services/football-api.service';
 
 @Component({
   selector: 'app-home',
