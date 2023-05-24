@@ -16,6 +16,7 @@ export class ExpansibleCardComponent {
   @Input('card-value') cardValue!: string
   @Input('card-is-expanded') cardIsExpanded: boolean = false
   @Input('options') options?: ExpansibleCardOption[]
+  @Input('option-selected') optionSelected?: ExpansibleCardOption
 
   @Output('card-click') cardClick = new EventEmitter<string>()
 

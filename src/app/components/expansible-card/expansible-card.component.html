@@ -1,8 +1,14 @@
 <div class="card">
   <div class="card-item button" (click)="onClick()" id="card">
-    <span class="bi bi-caret-right-fill"></span>
+    <div class="card-item-first">
+      <span class="bi bi-caret-right-fill"></span>
 
-    <h4>{{ cardTitle }}</h4>
+      <h4>{{ cardTitle }}</h4>
+    </div>
+
+    <div *ngIf="optionSelected">
+      {{ optionSelected.label }}
+    </div>
   </div>
 
   <div class="card-expanded" *ngIf="cardIsExpanded">
