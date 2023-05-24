@@ -7,9 +7,7 @@ import { SignInComponent } from './pages/authentication/sign-in/sign-in.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/general/home/home.component';
 import { DefaultComponent } from './components/default/default.component';
-import { CountriesComponent } from './components/home/countries/countries.component';
-import { LeaguesComponent } from './components/home/leagues/leagues.component';
-import { TeamsComponent } from './components/home/teams/teams.component';
+import { ExpansibleCardComponent } from './components/expansible-card/expansible-card.component';
 
 @NgModule({
   declarations: [
@@ -17,9 +15,7 @@ import { TeamsComponent } from './components/home/teams/teams.component';
     SignInComponent,
     HomeComponent,
     DefaultComponent,
-    CountriesComponent,
-    LeaguesComponent,
-    TeamsComponent
+    ExpansibleCardComponent
   ],
   imports: [
     BrowserModule,

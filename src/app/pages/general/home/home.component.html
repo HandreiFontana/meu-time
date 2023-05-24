@@ -1,7 +1,22 @@
 <div class="home">
-  <app-countries> </app-countries>
+  <app-expansible-card
+    (card-click)="toggleExpandedCard($event)"
+    [card-is-expanded]="cardIsExpanded('countries')"
+    card-title="Países"
+    card-value="countries"
+  > </app-expansible-card>
 
-  <app-leagues> </app-leagues>
+  <app-expansible-card 
+    (card-click)="toggleExpandedCard($event)"
+    [card-is-expanded]="cardIsExpanded('leagues')"
+    card-title="Ligas"
+    card-value="leagues"
+  > </app-expansible-card>
 
-  <app-teams> </app-teams>
+  <app-expansible-card 
+    (card-click)="toggleExpandedCard($event)"
+    [card-is-expanded]="cardIsExpanded('teams')"
+    card-title="Times"
+    card-value="teams"
+  > </app-expansible-card>
 </div>
