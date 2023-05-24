@@ -9,6 +9,14 @@
   gap: 1rem;
 }
 
+.option-selected {
+  background-color: var(--secondary-color);
+
+  .card-item {
+    background-color: var(--secondary-color);
+  }
+}
+
 .disabled {
   .card-item {
     background-color: var(--grey);
