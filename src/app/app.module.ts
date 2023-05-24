@@ -7,13 +7,15 @@ import { SignInComponent } from './pages/authentication/sign-in/sign-in.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/general/home/home.component';
 import { DefaultComponent } from './components/default/default.component';
+import { CountriesComponent } from './components/home/countries/countries.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignInComponent,
     HomeComponent,
-    DefaultComponent
+    DefaultComponent,
+    CountriesComponent
   ],
   imports: [
     BrowserModule,
