@@ -8,13 +8,17 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  signIn(token: string) {
+  public signIn(token: string) {
     localStorage.setItem('@meuTime:token', token)
     this.router.navigate(['home'])
   }
 
-  signOut() {
+  public signOut() {
     localStorage.removeItem('@meuTime:token')
     this.router.navigate(['sign-in'])
+  }
+
+  public get token(): string | null {
+    return localStorage.getItem('@meuTime:token')
   }
 }
