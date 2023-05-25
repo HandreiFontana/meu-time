@@ -1,8 +1,7 @@
 <div class="tabs">
   <div class="tabs-header paper">
     <div class="center tab-item" [ngClass]="selectedTab === 0 ? 'tab-active' : 'tab-inactive'" (click)="openTab(0)"><h5>JOGADORES</h5></div>
-    <div class="center tab-item" [ngClass]="selectedTab === 1 ? 'tab-active' : 'tab-inactive'" (click)="openTab(1)"><h5>FORMAÇÕES</h5></div>
-    <div class="center tab-item" [ngClass]="selectedTab === 2 ? 'tab-active' : 'tab-inactive'" (click)="openTab(2)"><h5>ESTATÍSTICAS</h5></div>
+    <div class="center tab-item" [ngClass]="selectedTab === 1 ? 'tab-active' : 'tab-inactive'" (click)="openTab(1)"><h5>ESTATÍSTICAS</h5></div>
   </div>
 
   <div class="tabs-body">
@@ -23,6 +22,23 @@
         <div class="player-30 center"><h4>{{player.age}}</h4></div>
 
         <div class="player-50 center"><h4>{{player.nacionality}}</h4></div>
+      </div>
+    </div>
+
+    <div class="statics-tab" *ngIf="selectedTab === 1">
+      <div class="games paper">
+        <div class="games-statics">
+          <div class="center mb1"><h3 class="uppercase">Total de jogos: </h3><h3 class="darker">{{statics.fixtures.played.total}}</h3></div>
+          <div class="statics-row"><span class="center wins paper">{{statics.fixtures.wins.total}}</span><h3> Vitórias</h3></div>
+          <div class="statics-row"><span class="center draws paper">{{statics.fixtures.draws.total}}</span><h3>Empates</h3></div>
+          <div class="statics-row"><span class="center loses paper">{{statics.fixtures.loses.total}}</span><h3>Derrotas</h3></div>
+        </div>
+      </div>
+
+      <div class="lineup center paper">
+        <h2>Formação Mais Utilizada</h2>
+
+        <h1>{{statics.lineups[0].formation}}</h1>
       </div>
     </div>
   </div>

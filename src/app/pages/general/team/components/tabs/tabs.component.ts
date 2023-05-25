@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ExpansibleCardOption } from 'src/app/components/expansible-card/expansible-card.component';
-import { FootballApiService, IPlayer } from 'src/app/services/football-api.service';
+import { FootballApiService, IPlayer, IStatics } from 'src/app/services/football-api.service';
 
 @Component({
   selector: 'app-tabs',
@@ -9,11 +8,13 @@ import { FootballApiService, IPlayer } from 'src/app/services/football-api.servi
 })
 export class TabsComponent {
   public players: IPlayer[] = []
+  public statics!: IStatics
 
   @Input('team-value') teamCode!: string
 
   constructor(private footballApi: FootballApiService) {
     this.loadPlayers()
+    this.loadStatics()
   }
 
   public selectedTab: number = 0
@@ -26,5 +27,11 @@ export class TabsComponent {
     this.footballApi
       .getPlayers(this.teamCode)
       .subscribe(players => this.players = players)
+  }
+
+  private loadStatics() {
+    this.footballApi
+      .getStatics(this.teamCode)
+      .subscribe(statics => this.statics = statics)
   }
 }

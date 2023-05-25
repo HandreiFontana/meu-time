@@ -26,6 +26,32 @@ export interface IPlayer {
   photo: string
 }
 
+interface ILocal {
+  home: number
+  away: number
+  total: number
+}
+
+interface ILineup {
+  formation: string
+  played: number
+}
+
+export interface IStatics {
+  fixtures: {
+    played: ILocal
+    wins: ILocal
+    draws: ILocal
+    loses: ILocal
+  }
+  goals: {
+    for: {
+      minute: any
+    }
+  }
+  lineups: ILineup[]
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -89,5 +115,90 @@ export class FootballApiService {
       { name: 'Neymar', age: 28, nacionality: 'Brazil' , photo: 'https://media.api-sports.io/football/players/276.png' }
     ]
     return of(players)
+  }
+
+  public getStatics(teamCode: string): Observable<IStatics> {
+    const statics: IStatics = {
+      fixtures: {
+        played: {
+          home: 19,
+          away: 19,
+          total: 38
+        },
+        wins: {
+          home: 10,
+          away: 8,
+          total: 18
+        },
+        draws: {
+          home: 7,
+          away: 5,
+          total: 12
+        },
+        loses: {
+          home: 2,
+          away: 6,
+          total: 8
+        }
+      },
+      goals: {
+        for: {
+          minute: {
+            "0-15": {
+              total: 4,
+              percentage: "6.06%"
+            },
+            "16-30": {
+              total: 17,
+              percentage: "25.76%"
+            },
+            "31-45": {
+              total: 11,
+              percentage: "16.67%"
+            },
+            "46-60": {
+              total: 13,
+              percentage: "19.70%"
+            },
+            "61-75": {
+              total: 10,
+              percentage: "15.15%"
+            },
+            "76-90": {
+              total: 8,
+              percentage: "12.12%"
+            },
+            "91-105": {
+              total: 3,
+              percentage: "4.55%"
+            },
+            "106-120": {
+              total: null,
+              percentage: null
+            }
+          }
+        }
+      },
+      lineups: [
+        {
+          "formation": "4-2-3-1",
+          "played": 32
+        },
+        {
+          "formation": "3-4-1-2",
+          "played": 4
+        },
+        {
+          "formation": "3-4-2-1",
+          "played": 1
+        },
+        {
+          "formation": "4-3-1-2",
+          "played": 1
+        }
+      ]
+    }
+
+    return of(statics)
   }
 }
