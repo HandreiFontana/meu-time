@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +26,8 @@ import { TabsComponent } from './pages/general/team/components/tabs/tabs.compone
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     {

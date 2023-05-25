@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { FootballApiService, IPlayer, IStatics } from 'src/app/services/football-api.service';
 
@@ -9,14 +9,17 @@ Chart.register(...registerables)
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss']
 })
-export class TabsComponent {  
+export class TabsComponent implements OnInit {  
   public players: IPlayer[] = []
   public statics!: IStatics
   public goalsChart!: Chart
 
-  @Input('team-value') teamCode!: string
+  @Input('team-value') teamCode!: number
+  @Input('league-code') leagueCode!: string
 
-  constructor(private footballApi: FootballApiService) {
+  constructor(private footballApi: FootballApiService) { }
+
+  ngOnInit(): void {
     this.loadPlayers()
     this.loadStatics()
   }
@@ -29,7 +32,7 @@ export class TabsComponent {
     if (index === 1) {
       setTimeout(() => {
         this.loadGoalsChartData()
-      }, 300)
+      })
     }
   }
 
@@ -41,7 +44,7 @@ export class TabsComponent {
 
   private loadStatics() {
     this.footballApi
-      .getStatics(this.teamCode)
+      .getStatics(this.teamCode, this.leagueCode)
       .subscribe(statics => this.statics = statics)
   }
 

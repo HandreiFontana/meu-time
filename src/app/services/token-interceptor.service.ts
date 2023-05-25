@@ -16,10 +16,12 @@ export class TokenInterceptorService implements HttpInterceptor {
     const token = this.auth.token
 
     if (token) {
-      req = req.clone({ headers: req.headers.append("x-rapidapi-host", 'v3.football.api-sports.io') })
+      req = req.clone({ headers: req.headers.append("X-RapidAPI-Host", 'api-football-v1.p.rapidapi.com') })
 
-      req = req.clone({ headers: req.headers.append("x-rapidapi-key", token) })
+      req = req.clone({ headers: req.headers.append("X-RapidAPI-Key", token) })
     }
+
+    console.log(req)
 
     return next.handle(req)
   }

@@ -93,6 +93,7 @@ export class HomeComponent {
   }
 
   private teamOptionClick(teamOption: ExpansibleCardOption) {
+    console.log(teamOption)
     this.teamSelected = teamOption
   }
 

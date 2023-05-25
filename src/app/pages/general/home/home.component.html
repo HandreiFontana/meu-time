@@ -29,6 +29,7 @@
 </div>
 
 <app-team
-  [team-value]="teamSelected"
+  [team-value]="teamSelected!"
+  [league-code]="leagueSelected?.options.code"
   (team-close)="unselectTeam()"
 > </app-team>

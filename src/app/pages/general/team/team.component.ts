@@ -8,7 +8,8 @@ import { ExpansibleCardOption } from 'src/app/components/expansible-card/expansi
 })
 export class TeamComponent {
   
-  @Input('team-value') teamValue?: ExpansibleCardOption
+  @Input('team-value') teamValue!: ExpansibleCardOption
+  @Input('league-code') leagueCode?: string
 
   @Output('team-close') teamClose = new EventEmitter()
 
