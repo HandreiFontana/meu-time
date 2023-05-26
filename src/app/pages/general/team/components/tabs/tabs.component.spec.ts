@@ -20,4 +20,11 @@ describe('TabsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should open tab', () => {
+    const tab = 1
+
+    component.openTab(tab)
+    expect(component.selectedTab).toEqual(tab)
+  })
 });
