@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TabsComponent } from './tabs.component';
@@ -8,6 +9,7 @@ describe('TabsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [TabsComponent]
     });
     fixture = TestBed.createComponent(TabsComponent);
