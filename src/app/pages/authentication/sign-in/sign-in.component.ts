@@ -43,6 +43,7 @@ export class SignInComponent {
         .subscribe({
           next: () => {},
           error: (err) => {
+            console.log(err)
             if (err.status === 404) {
               this.auth.signIn(token!)
 
