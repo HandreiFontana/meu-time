@@ -110,18 +110,18 @@ export class HomeComponent implements OnDestroy {
     return this.expandedCard === value
   }
 
-  private countryOptionClick(countryOption: ExpansibleCardOption) {
+  public countryOptionClick(countryOption: ExpansibleCardOption) {
     this.countrySelected = countryOption
     this.leagueSelected = undefined
     this.populateLeagues(countryOption.options!.code)
   }
 
-  private leagueOptionClick(leagueOption: ExpansibleCardOption) {
+  public leagueOptionClick(leagueOption: ExpansibleCardOption) {
     this.leagueSelected = leagueOption
     this.populateTeams(leagueOption.options!.code)
   }
 
-  private teamOptionClick(teamOption: ExpansibleCardOption) {
+  public teamOptionClick(teamOption: ExpansibleCardOption) {
     this.teamSelected = teamOption
   }
 
