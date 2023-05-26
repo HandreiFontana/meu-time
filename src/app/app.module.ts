@@ -13,6 +13,7 @@ import { ExpansibleCardComponent } from './components/expansible-card/expansible
 import { TeamComponent } from './pages/general/team/team.component';
 import { TabsComponent } from './pages/general/team/components/tabs/tabs.component';
 import { SeasonSelectComponent } from './components/season-select/season-select.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SeasonSelectComponent } from './components/season-select/season-select.
     ExpansibleCardComponent,
     TeamComponent,
     TabsComponent,
-    SeasonSelectComponent
+    SeasonSelectComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

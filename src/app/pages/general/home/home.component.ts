@@ -9,6 +9,8 @@ import { FootballApiService } from 'src/app/services/football-api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnDestroy {
+  public isLoading = false
+
   constructor(private footballApi: FootballApiService) {
     this.populateCountries()
   }
@@ -31,9 +33,14 @@ export class HomeComponent implements OnDestroy {
   public teams: ExpansibleCardOption[] = []
 
   private populateCountries() {
+    this.toggleLoading()
+
     this.subscriptions.add(
       this.footballApi
         .getCountries()
+        .pipe(finalize(() => {
+          this.toggleLoading()
+        }))
         .subscribe(countries => {
           countries.map(country => {
             this.countries.push({
@@ -48,11 +55,16 @@ export class HomeComponent implements OnDestroy {
   }
 
   private populateLeagues(countrySelected: string) {
+    this.toggleLoading()
+    
     this.leagues = []
     this.subscriptions.add(
       this.footballApi
         .getLeagues(countrySelected)
-        .pipe(finalize(() => this.expandedCard = 'leagues'))
+        .pipe(finalize(() => {
+          this.toggleLoading()
+          this.expandedCard = 'leagues'
+        }))
         .subscribe(leagues => {
           leagues.map(league => {
             this.leagues.push({
@@ -67,11 +79,16 @@ export class HomeComponent implements OnDestroy {
   }
 
   private populateTeams(leagueSelected: string) {
+    this.toggleLoading()
+    
     this.teams = []
     this.subscriptions.add(
       this.footballApi
         .getTeams(leagueSelected)
-        .pipe(finalize(() => this.expandedCard = 'teams'))
+        .pipe(finalize(() => {
+          this.toggleLoading()
+          this.expandedCard = 'teams'
+        }))
         .subscribe(teams => {
           teams.map(team => {
             this.teams.push({
@@ -115,5 +132,9 @@ export class HomeComponent implements OnDestroy {
   public changeSeason() {
     this.leagueSelected = undefined
     this.expandedCard = 'league'
+  }
+
+  private toggleLoading() {
+    this.isLoading = !this.isLoading
   }
 }

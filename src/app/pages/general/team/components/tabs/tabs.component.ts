@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
-import { Subscription } from 'rxjs';
+import { Subscription, concat, finalize, forkJoin, map, merge } from 'rxjs';
 import { FootballApiService, IPlayer, IStatics } from 'src/app/services/football-api.service';
 
 Chart.register(...registerables)
@@ -14,6 +14,7 @@ export class TabsComponent implements OnInit, OnDestroy {
   public players: IPlayer[] = []
   public statics!: IStatics
   public goalsChart!: Chart
+  public isLoading = false
 
   @Input('team-value') teamCode!: number
   @Input('league-code') leagueCode!: string
@@ -23,8 +24,7 @@ export class TabsComponent implements OnInit, OnDestroy {
   constructor(private footballApi: FootballApiService) { }
 
   ngOnInit(): void {
-    this.loadPlayers()
-    this.loadStatics()
+    this.initialLoad()
   }
 
   ngOnDestroy(): void {
@@ -43,19 +43,21 @@ export class TabsComponent implements OnInit, OnDestroy {
     }
   }
 
-  private loadPlayers() {
-    this.subscriptions.add(
-      this.footballApi
-        .getPlayers(this.teamCode)
-        .subscribe(players => this.players = players)
-    )
-  }
+  private initialLoad() {
+    this.toggleLoading()
 
-  private loadStatics() {
+    const players = this.footballApi
+      .getPlayers(this.teamCode)
+      .pipe(map(players => this.players = players))
+
+    const statics = this.footballApi
+      .getStatics(this.teamCode, this.leagueCode)
+      .pipe(map(statics => this.statics = statics))
+
     this.subscriptions.add(
-      this.footballApi
-        .getStatics(this.teamCode, this.leagueCode)
-        .subscribe(statics => this.statics = statics)
+      forkJoin([ players, statics ])
+        .pipe(finalize(() => this.toggleLoading()))
+        .subscribe()
     )
   }
 
@@ -97,5 +99,9 @@ export class TabsComponent implements OnInit, OnDestroy {
     const chart = document.getElementById('chart') as HTMLCanvasElement
     
     this.goalsChart = new Chart(chart, data)
+  }
+
+  private toggleLoading() {
+    this.isLoading = !this.isLoading
   }
 }

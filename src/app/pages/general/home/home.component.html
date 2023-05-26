@@ -35,3 +35,5 @@
   [league-code]="leagueSelected?.options.code"
   (team-close)="unselectTeam()"
 > </app-team>
+
+<app-loading *ngIf="isLoading"> </app-loading>
