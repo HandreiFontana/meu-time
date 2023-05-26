@@ -12,6 +12,7 @@ import { DefaultComponent } from './components/default/default.component';
 import { ExpansibleCardComponent } from './components/expansible-card/expansible-card.component';
 import { TeamComponent } from './pages/general/team/team.component';
 import { TabsComponent } from './pages/general/team/components/tabs/tabs.component';
+import { SeasonSelectComponent } from './components/season-select/season-select.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TabsComponent } from './pages/general/team/components/tabs/tabs.compone
     DefaultComponent,
     ExpansibleCardComponent,
     TeamComponent,
-    TabsComponent
+    TabsComponent,
+    SeasonSelectComponent
   ],
   imports: [
     BrowserModule,

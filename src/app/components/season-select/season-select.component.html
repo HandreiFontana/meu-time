@@ -1,0 +1,8 @@
+<div class="all-line">
+  <div class="select paper center" (click)="toggleModal()"><h3>{{ footballApi.season }}</h3></div>
+
+  <div *ngIf="modalIsOpen" class="season-modal paper">
+    <div *ngFor="let season of footballApi.seasonList" class="season center" (click)="seasonClick(season)">{{ season }}</div>
+  </div>
+</div>
+

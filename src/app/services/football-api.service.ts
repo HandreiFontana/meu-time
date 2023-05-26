@@ -102,10 +102,27 @@ export interface IStatics {
   providedIn: 'root'
 })
 export class FootballApiService {
-  public season = 2023
+  public seasonInit = 2010
+  public seasonLast = 2021
+  public season = this.seasonLast
+
   private apiUrl: string = 'https://api-football-v1.p.rapidapi.com/v3'
 
   constructor(private http: HttpClient) { }
+
+  get seasonList(): number[] {
+    const seasons = []
+    let init = this.seasonInit
+    let last = this.seasonLast
+    while (last >= init) {
+      seasons.push(last--)
+    }
+    return seasons
+  }
+
+  public changeSeason(season: number) {
+    this.season = season
+  }
 
   public getCountries(): Observable<ICountry[]> {
     // return this.http

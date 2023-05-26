@@ -1,0 +1,57 @@
+.all-line {
+  width: 100%;
+  height: 40px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  position: relative;
+}
+
+.select {
+  padding: 1rem;
+  color: var(--white);
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.select:hover {
+  filter: brightness(0.8);
+}
+
+.season-modal {
+  position: absolute;
+  right: 0;
+  top: 110%;
+  padding: 1rem;
+  width: 150px;
+  max-height: 150px;
+  z-index: 100;
+  border-radius: 5px;
+  background-color: var(--background);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow-y: scroll;
+}
+
+.season {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: var(--background);
+  border-radius: 5px;
+  font-weight: bold;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.season:hover {
+  filter: brightness(0.8);
+}
