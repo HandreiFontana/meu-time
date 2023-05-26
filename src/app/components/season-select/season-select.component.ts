@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FootballApiService } from 'src/app/services/football-api.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { FootballApiService } from 'src/app/services/football-api.service';
 export class SeasonSelectComponent {
   public modalIsOpen = false
 
+  @Output('change-season') changeSeason = new EventEmitter<number>()
+
   constructor(public footballApi: FootballApiService) { }
 
   public toggleModal() {
@@ -18,5 +20,6 @@ export class SeasonSelectComponent {
   public seasonClick(season: number) {
     this.footballApi.changeSeason(season)
     this.modalIsOpen = false
+    this.changeSeason.emit(season)
   }
 }

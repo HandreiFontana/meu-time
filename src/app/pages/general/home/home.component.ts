@@ -93,11 +93,15 @@ export class HomeComponent {
   }
 
   private teamOptionClick(teamOption: ExpansibleCardOption) {
-    console.log(teamOption)
     this.teamSelected = teamOption
   }
 
   public unselectTeam() {
     this.teamSelected = undefined
+  }
+
+  public changeSeason() {
+    this.leagueSelected = undefined
+    this.expandedCard = 'league'
   }
 }

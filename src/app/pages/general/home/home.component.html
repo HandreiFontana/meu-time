@@ -1,5 +1,5 @@
 <div class="home">
-  <app-season-select> </app-season-select>
+  <app-season-select (change-season)="changeSeason()"> </app-season-select>
   
   <app-expansible-card
     (card-click)="toggleExpandedCard($event)"
@@ -20,7 +20,7 @@
     [option-selected]="leagueSelected"
   > </app-expansible-card>
 
-  <app-expansible-card 
+  <app-expansible-card
     (card-click)="toggleExpandedCard($event)"
     [card-is-expanded]="cardIsExpanded('teams')"
     card-title="Times"

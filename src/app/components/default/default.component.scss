@@ -14,7 +14,7 @@ span {
 }
 
 .toolbar-body {
-  width: calc(100vw - 6px);
+  width: 100vw;
   height: 60px;
 
   display: flex;
@@ -27,6 +27,7 @@ span {
 }
 
 .toolbar-items {
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,6 +38,12 @@ span {
   max-width: 1000px;
   height: 100%;
   margin: 0 auto;
+}
+
+.max-body {
+  height: 100%;
+  max-height: calc(100% - 100px);
+  overflow-y: scroll;
 }
 
 .body-items {
