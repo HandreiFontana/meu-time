@@ -129,47 +129,33 @@ export class FootballApiService {
   }
 
   public getCountries(): Observable<ICountry[]> {
-    // return this.http
-    //   .get<ICountryResponse>(`${this.apiUrl}/countries`)
-    //   .pipe(map(res => res.response))
-    
-    return of(countries)
+    return this.http
+      .get<ICountryResponse>(`${this.apiUrl}/countries`)
+      .pipe(map(res => res.response))
   }
 
   public getLeagues(countryCode: string): Observable<ILeague[]> {
-    // return this.http
-    //   .get<ILeagueResponse>(`${this.apiUrl}/leagues?code=${countryCode}`)
-    //   .pipe(map(res => res.response.map(item => item.league)))
-
-    const newLeagues = leagues.map((item: any) => item.league)
-    return of(newLeagues)
+    return this.http
+      .get<ILeagueResponse>(`${this.apiUrl}/leagues?code=${countryCode}`)
+      .pipe(map(res => res.response.map(item => item.league)))
   }
 
   public getTeams(leagueCode: string): Observable<ITeam[]> {
-    // return this.http
-    //   .get<ITeamResponse>(`${this.apiUrl}/teams?league=${leagueCode}&season=${this.season}`)
-    //   .pipe(map(res => res.response.map(item => item.team)))
-
-    const newTeams = teams.map((item: any) => item.team)
-    return of(newTeams)
+    return this.http
+      .get<ITeamResponse>(`${this.apiUrl}/teams?league=${leagueCode}&season=${this.season}`)
+      .pipe(map(res => res.response.map(item => item.team)))
   }
 
   public getPlayers(teamCode: number): Observable<IPlayer[]> {
-    // return this.http
-    //   .get<IPlayerResponse>(`${this.apiUrl}/players?team=${teamCode}&season=${this.season}`)
-    //   .pipe(map(res => res.response.map(item => item.player)))
-
-    const newPlayers = players.map(item => item.player)
-    return of(newPlayers)
+    return this.http
+      .get<IPlayerResponse>(`${this.apiUrl}/players?team=${teamCode}&season=${this.season}`)
+      .pipe(map(res => res.response.map(item => item.player)))
   }
 
   public getStatics(teamCode: number, leagueCode: string): Observable<IStatics> {
-    // return this.http
-    //   .get<IStaticsResponse>(`${this.apiUrl}/teams/statistics?team=${teamCode}&league=${leagueCode}&season=${this.season}`)
-    //   .pipe(map(res => res.response))
-
-    const newStatics: IStatics = statics
-    return of(newStatics)
+    return this.http
+      .get<IStaticsResponse>(`${this.apiUrl}/teams/statistics?team=${teamCode}&league=${leagueCode}&season=${this.season}`)
+      .pipe(map(res => res.response))
   }
 
   public verifyAccount(token: string) {
