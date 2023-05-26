@@ -1,0 +1,17 @@
+<div class="alert-body" *ngIf="alertService.isActive">
+  <div class="alert success-alert center" *ngIf="alertService.type === 'success'">
+    <h4>{{ alertService.text }}</h4>
+
+    <div class="close-icon center" (click)="alertService.closeAlert()">
+      <span class="bi bi-x"> </span>
+    </div>
+  </div>
+
+  <div class="alert danger-alert center" *ngIf="alertService.type === 'warning'">
+    <h4>{{ alertService.text }}</h4>
+
+    <div class="close-icon center" (click)="alertService.closeAlert()">
+      <span class="bi bi-x"> </span>
+    </div>
+  </div>
+</div>

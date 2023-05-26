@@ -14,6 +14,7 @@ import { TeamComponent } from './pages/general/team/team.component';
 import { TabsComponent } from './pages/general/team/components/tabs/tabs.component';
 import { SeasonSelectComponent } from './components/season-select/season-select.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     TeamComponent,
     TabsComponent,
     SeasonSelectComponent,
-    LoadingComponent
+    LoadingComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

@@ -21,8 +21,6 @@ export class TokenInterceptorService implements HttpInterceptor {
       req = req.clone({ headers: req.headers.append("X-RapidAPI-Key", token) })
     }
 
-    console.log(req)
-
     return next.handle(req)
   }
 }

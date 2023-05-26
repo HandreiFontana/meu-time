@@ -29,6 +29,10 @@ interface IPlayerResponse {
   }[]
 }
 
+interface IAtuhResponse {
+  message: string
+}
+
 interface IStaticsResponse {
   response: {
     fixtures: {
@@ -166,5 +170,15 @@ export class FootballApiService {
 
     const newStatics: IStatics = statics
     return of(newStatics)
+  }
+
+  public verifyAccount(token: string) {
+    return this.http
+      .get<IAtuhResponse>(this.apiUrl, {
+        headers: {
+          "X-RapidAPI-Host": 'api-football-v1.p.rapidapi.com',
+          "X-RapidAPI-Key": token
+        }
+      })
   }
 }
