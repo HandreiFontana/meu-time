@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { finalize } from 'rxjs';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription, finalize } from 'rxjs';
 import { ExpansibleCardOption } from 'src/app/components/expansible-card/expansible-card.component';
 import { FootballApiService } from 'src/app/services/football-api.service';
 
@@ -8,9 +8,15 @@ import { FootballApiService } from 'src/app/services/football-api.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
   constructor(private footballApi: FootballApiService) {
     this.populateCountries()
+  }
+
+  private subscriptions = new Subscription()
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe()
   }
 
   public expandedCard?: string | null
@@ -25,52 +31,58 @@ export class HomeComponent {
   public teams: ExpansibleCardOption[] = []
 
   private populateCountries() {
-    this.footballApi
-      .getCountries()
-      .subscribe(countries => {
-        countries.map(country => {
-          this.countries.push({
-            label: country.name,
-            action: this.countryOptionClick.bind(this),
-            image: country.flag,
-            options: { code: country.code }
+    this.subscriptions.add(
+      this.footballApi
+        .getCountries()
+        .subscribe(countries => {
+          countries.map(country => {
+            this.countries.push({
+              label: country.name,
+              action: this.countryOptionClick.bind(this),
+              image: country.flag,
+              options: { code: country.code }
+            })
           })
         })
-      })
+    )
   }
 
   private populateLeagues(countrySelected: string) {
     this.leagues = []
-    this.footballApi
-      .getLeagues(countrySelected)
-      .pipe(finalize(() => this.expandedCard = 'leagues'))
-      .subscribe(leagues => {
-        leagues.map(league => {
-          this.leagues.push({
-            label: league.name,
-            action: this.leagueOptionClick.bind(this),
-            image: league.logo,
-            options: { code: league.id }
+    this.subscriptions.add(
+      this.footballApi
+        .getLeagues(countrySelected)
+        .pipe(finalize(() => this.expandedCard = 'leagues'))
+        .subscribe(leagues => {
+          leagues.map(league => {
+            this.leagues.push({
+              label: league.name,
+              action: this.leagueOptionClick.bind(this),
+              image: league.logo,
+              options: { code: league.id }
+            })
           })
         })
-      })
+    )
   }
 
   private populateTeams(leagueSelected: string) {
     this.teams = []
-    this.footballApi
-      .getTeams(leagueSelected)
-      .pipe(finalize(() => this.expandedCard = 'teams'))
-      .subscribe(teams => {
-        teams.map(team => {
-          this.teams.push({
-            label: team.name,
-            action: this.teamOptionClick.bind(this),
-            image: team.logo,
-            options: { code: team.id }
+    this.subscriptions.add(
+      this.footballApi
+        .getTeams(leagueSelected)
+        .pipe(finalize(() => this.expandedCard = 'teams'))
+        .subscribe(teams => {
+          teams.map(team => {
+            this.teams.push({
+              label: team.name,
+              action: this.teamOptionClick.bind(this),
+              image: team.logo,
+              options: { code: team.id }
+            })
           })
         })
-      })
+    )
   }
 
   public toggleExpandedCard(card: string) {

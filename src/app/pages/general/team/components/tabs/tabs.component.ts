@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
+import { Subscription } from 'rxjs';
 import { FootballApiService, IPlayer, IStatics } from 'src/app/services/football-api.service';
 
 Chart.register(...registerables)
@@ -9,7 +10,7 @@ Chart.register(...registerables)
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss']
 })
-export class TabsComponent implements OnInit {  
+export class TabsComponent implements OnInit, OnDestroy {  
   public players: IPlayer[] = []
   public statics!: IStatics
   public goalsChart!: Chart
@@ -17,11 +18,17 @@ export class TabsComponent implements OnInit {
   @Input('team-value') teamCode!: number
   @Input('league-code') leagueCode!: string
 
+  private subscriptions = new Subscription()
+
   constructor(private footballApi: FootballApiService) { }
 
   ngOnInit(): void {
     this.loadPlayers()
     this.loadStatics()
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe()
   }
 
   public selectedTab: number = 0
@@ -37,15 +44,19 @@ export class TabsComponent implements OnInit {
   }
 
   private loadPlayers() {
-    this.footballApi
-      .getPlayers(this.teamCode)
-      .subscribe(players => this.players = players)
+    this.subscriptions.add(
+      this.footballApi
+        .getPlayers(this.teamCode)
+        .subscribe(players => this.players = players)
+    )
   }
 
   private loadStatics() {
-    this.footballApi
-      .getStatics(this.teamCode, this.leagueCode)
-      .subscribe(statics => this.statics = statics)
+    this.subscriptions.add(
+      this.footballApi
+        .getStatics(this.teamCode, this.leagueCode)
+        .subscribe(statics => this.statics = statics)
+    )
   }
 
   private loadGoalsChartData() {
